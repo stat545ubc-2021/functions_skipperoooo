@@ -1,0 +1,90 @@
+---
+title: "Assignment B-1: Making a function"
+author: "Colton Stevens"
+output: github_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load the relevant packages.
+```{r, message = FALSE}
+library(tidyverse)
+```
+
+
+## Exercise 1: Make a Function (25 points)
+In this exercise, you’ll be making a function and fortifying it. The function need not be complicated. The function need not be “serious”, but shouldn’t be nonsense.
+
+This function takes in a dataframe and a numerical column in that dataframe and outputs the mean, median, max, min, standard deviation, and count.
+```{r}
+summary_stats_column <- function(data, col) {
+  calculations <- dplyr::summarise(data,
+                                   is_numeric = is.numeric({{col}}),
+                                   class = class({{col}}))
+  if(!calculations$is_numeric){
+    stop("Selected column is not numeric. Column is: ", calculations$class)
+  }
+
+  summary_table <- data %>%
+    dplyr::summarise(mean = mean({{col}}, na.rm = TRUE),
+            median = median({{col}}, na.rm = TRUE),
+            max = max({{col}}, na.rm = TRUE),
+            min = min({{col}}, na.rm = TRUE),
+            st_dev = sd({{col}}, na.rm = TRUE),
+            count = n())
+  
+  summary_plot <- ggplot(data, aes(x = factor(1), y = {{col}})) +
+    geom_boxplot(width = 0.4, fill = "white") +
+    geom_jitter(width = 0.1, size = 1, alpha = 0.3) +
+    labs(x = NULL)
+  
+  return(list(summary_table, summary_plot))
+  
+}
+
+summary_stats_column(gapminder, lifeExp)
+
+```
+
+```{r}
+testthat::expect_error(fun(gapminder, country))
+```
+
+
+```{r}
+summary_plot <- ggplot(data, aes(x = factor(1), y = {{col}})) +
+    geom_boxplot(width = 0.4, fill = "white") +
+    geom_jitter(width = 0.1, size = 1, alpha = 0.3) +
+    labs(x = NULL)
+```
+
+
+
+```{r}
+
+knitr::kable(data, caption = "My data")
+
+fun(gapminder, gpd)
+head(gapminder)
+
+summary_stats_column(gapminder, lifeExp)
+```
+
+
+```{r}
+library(gapminder)
+
+fun <- function(data, col) {
+  calculations <- dplyr::summarise(data, 
+                                   is_numeric = is.numeric({{ col }}), 
+                                   class = class({{ col }}))
+  if (!calculations$is_numeric) {
+    stop("Selected column is not numeric. Column is ", calculations$class)
+  }
+ dplyr::select(data, {{ col }})
+}
+
+fun(gapminder, lifeExp)
+```
+
