@@ -1,4 +1,4 @@
-# Welcome to Colton Stevens's README file for the STAT545B Assignment B-1: Making a function!
+# Welcome to Colton Stevens's README file for the STAT545B Assignment B-2: Making an R package!
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
