@@ -1,0 +1,24 @@
+Package: sumstat
+Title: Summary Statistics for a Numeric Column in a Data.frame
+Version: 0.1.0
+Authors@R: 
+    person(given = "Colton",
+           family = "Stevens",
+           role = c("aut", "cre"),
+           email = "colton04@student.ubc.ca",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package provides a function that takes in a data.frame and a numerical column in that dataframe and outputs a data.frame of summary statistics (mean, median, max, min, standard deviation, and count), as well as a histogram of that column's distribution with a vertical line representing the mean.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+  magrittr,
+  dplyr,
+  tidyverse,
+  gapminder,
+  ggplot2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
