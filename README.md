@@ -16,7 +16,7 @@ sumstat is not yet on CRAN, but you can download it from this repository
 using the following R command.
 
 ``` r
-devtools::install_github("functions_skipperoooo/sumstat")
+devtools::install_github("stat545ubc-2021/functions_skipperoooo")
 ```
 
 ## Example
