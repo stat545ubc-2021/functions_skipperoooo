@@ -1,3 +1,4 @@
+# Welcome to Colton Stevens's README file for the STAT545B Assignment B-1: Making a function!
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -34,3 +35,4 @@ summary_stats_column(mtcars, mpg)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
+
